@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDM1 - W6P2 - Exercise 1.1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../lib/main-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="../lib/libraries/p5.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Exercise 1.1</h1>
+    <p>Your sketch:</p>
+    <div class="guidance">
+        <h2>Instructions</h2>
+        <div>
+            <p>Your task is to write a Star class that you will then use to create falling and shooting star 
+                animations.
+            </p>
+            <p>Open <code>sketch.js</code>. You will see that it contains a function, <code>star()</code>, that draws a star 
+            at x and y coordinates provided as function arguments. You may recognise this function from an earlier practical. It is provided to help you implement the Star class. It will 
+            not be used in the finished sketch.</p>
+            <p>At the top of the file, create a class called <code>Star</code>. It should have two instance variables, <code>x</code> and <code>y</code>, that are 
+            initialised with values passed to the constructor. For example, to create a star at 100, 300, you would type:</p>
+            <pre>let myStar = new Star(100, 300);</pre>
+            <p>Next, add a method called <code>draw()</code>. This method should have no parameters. It should draw the star at the object's 
+            x and y coordinates. So, to draw the example star created above, you could type:</p>
+            <pre>myStar.draw();</pre>
+            <p>...and a star would appear at 100, 300.</p>
+            <p>Next, add two more methods, one called <code>fall()</code> and one called <code>shoot()</code>. Both methods should take 
+            one parameter called <code>speed</code>, a number representing the number of pixels the star should fall or shoot by respectively.</p>
+            <p>Implement the methods. <code>fall()</code> should move the star object along the y axis and <code>shoot()</code> should move the star 
+            object along the x axis. Here are examples of how the methods would be called on the example star object:</p>
+            <pre>myStar.fall(2); // moves the star two pixels down the y axis
+myStar.shoot(5); // moves the star five pixels along the x axis.
+            </pre>
+            <p>Outside the class, create an animation to test your methods. For example, the animation shown in the video below was created as follows (<code>Star</code> 
+            class not shown):</p>
+            <pre>let fallingStar = new Star(200, 0);
+let shootingStar = new Star(0, 200);
+                
+function setup() {
+  createCanvas(400, 400);
+}
+                
+function draw() {
+  background(0);
+  shootingStar.shoot(5);
+  shootingStar.draw();
+  fallingStar.fall(2);
+  fallingStar.draw();
+}</pre>
+            <p>Check your work by running <a href="./check-exercise1-1.html">check-exercise1-1.html</a>.</p>
+            <p>Expected output:</p>
+            <p>
+                <video width="400" height="400" controls>
+                    <source src="./assets/exercise1-1.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </p>
+        </div>
+        <div>
+            <button class="btn btn-primary hint" type="button" data-bs-toggle="collapse" data-bs-target="#hint" aria-expanded="false" aria-controls="hint">
+                Hint
+            </button>
+            <div class="collapse" id="hint">
+                <div class="card card-body">
+                    <p>You will find it helpful to have the bouncingBallsOO example from lecture open to use as reference. You can find all example code in the <a href="https://github.com/UoY-PDM1/PDM1-example-code" target="_blank">PDM1-example-code repo</a>.</p>
+                    <p>The main thing to remember (that people often forget), is that when referencing instance variables from within 
+                        the class, you need to type <code>this.</code> before the variable name. You can see lots of examples of this in 
+                        the bouncingBallsOO example code.
+                    </p>
+                    <p>Creating a method is exactly like creating a function, it just needs to be <em>inside</em> the class definition--that means 
+                    completely between the opening and closing curly braces. You also should leave out the keyword <code>function</code>. There are 
+                    examples in the bouncingBalls00 sketch.</p>
+                    <p>To implement the <code>draw()</code> method, copy and paste the contents of the <code>star()</code> 
+                    function into your <code>draw()</code> method (not the <code>draw()</code> <em>function</em>) and 
+                    replace the uses of the <code>x</code> and <code>y</code> arguments in the original to use the the instance variables 
+                    instead.</p>
+                    <p>Implementing the <code>fall()</code> and <code>move()</code> methods should be straightforward. 
+                    We didn't go over an example of a method with a parameter in class but the syntax is exactly the same 
+                    as parameters in functions and the class constructor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="sketch.js"></script>
+  </body>
+</html>

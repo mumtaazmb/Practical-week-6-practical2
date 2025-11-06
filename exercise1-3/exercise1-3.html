@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDM1 - W6P2 - Exercise 1.3</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../lib/main-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="../lib/libraries/p5.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Exercise 1.3</h1>
+    <p>Your sketch:</p>
+    <div class="guidance">
+        <h2>Instructions</h2>
+        <div>
+            <p>Classes are really useful for creating UI controls (e.g. buttons, checkboxes, input fields). UI 
+                controls all have locations and dimensions as well as other properties specific to the type of 
+                control. For example, buttons will generally have labels, the text that is displayed on the button. 
+                UI controls also typically need to track their <em>state</em> e.g. clicked or not clicked, selected or not 
+                selected.
+            </p>
+            <p>In sketch.js, you will find an outline of a <code>Button</code> class that will be used to create 
+            a clickable button on the canvas. Your first task is to finish implementing the class. You will need to 
+            add instance variables to store the values of the arguments passed to the constructor. The constructor and 
+            all methods have been documented--use this information to implement the constructor and methods.</p>
+            <p>Notice that the <code>#mouseIsOver()</code> method begins with the # symbol. In a JavaScript class, any
+                instance variable or method that begins with # is <em>private</em>, meaning it can't be accessed outside 
+                of the class. Private variables and methods can be used to restrict access to data and behaviour that 
+                calling code doesn't need to use. A core principle of object-oriented programming is "information hiding", 
+                meaning that the implementation details of an object should generally be hidden from the code that uses 
+                the object. Hiding information reduces the risk of bugs caused by calling code changing the values of 
+                instance variables or the object's state. Consider whether your instance variables should be private or 
+                public. There is no right answer here... it is your design choice to make.
+            </p>
+            <p>Any details of how the button is displayed that are not specified (e.g. label alignment) in the method 
+                documentation are up to you.
+            </p>
+            <p>When the Button class is complete, your next task is to use it to approximate the output shown below. Your sketch should:</p>
+            <ul>
+                <li>Draw a Button labelled "Click me!" on the canvas at your preferred location and size.</li>
+                <li>Increment a global variable called <code>counter</code> every time the button is clicked.</li>
+                <li>Display the number of times the button has been clicked.</li>
+            </ul>
+            <p>Check your work by running <a href="./check-exercise1-3.html">check-exercise1-3.html</a>.</p>
+            <p>Expected output:</p>
+            <p>
+                <video width="400" height="400" controls>
+                    <source src="./assets/exercise1-3.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </p>
+        </div>
+        <div>
+            <button class="btn btn-primary hint" type="button" data-bs-toggle="collapse" data-bs-target="#hint" aria-expanded="false" aria-controls="hint">
+                Hint
+            </button>
+            <div class="collapse" id="hint">
+                <div class="card card-body">
+                    <h3>Implementing the Button class</h3>
+                    <p>Start by implementing the Button instance variables. You will need one variable for each constructor argument. If you 
+                        would like to make the instance variables private, use # before the name e.g. #x, #y. In the constructor, assign the values 
+                        of the arguments to the instance variables. Private instance variables should be preceded with <code>this.</code> just like 
+                        any other class member.
+                    </p>
+                    <p>Next, implement the private method, <code>#isMouseOver()</code>. This method should check if <code>mouseX</code> and 
+                    <code>mouseY</code> are within the bounds of the Button. You have seen many examples of this type of 
+                    check now so no further hints are provided.</p>
+                    <p>Next, implement the <code>clicked()</code> method. This method should check if the mouse is over the the button and 
+                    if the mouse is currently pressed. Make use of the <code>#mouseIsOver()</code> method you have already written. There is 
+                    a system variable that tells you if the mouse is currently pressed... you used it earlier in 
+                    the semester. Take a look at the p5.js reference if you can't remember what the variable is.</p>
+                    <p>Finally, implement the <code>draw()</code> method. You can choose the text size and alignment. Use your <code>#mouseIsOver()</code> method to determine if 
+                    the button is hovered. If it is set the button's fill using <code>fill(0, 0, 255);</code>. Otherwise, the button's fill should be 
+                    black. You will need to call <code>fill()</code> again before drawing the label text on the button, otherwise the text will be the same 
+                    colour as the button and you won't be able to see it.</p>
+                    <h3>Using the Button class to create the expected output</h3>
+                    <p>You will need two global variables: one to store an instance of the <code>Button</code> class and another called <code>counter</code>, 
+                    which should be set to 0 initially. When you create the <code>Button</code> object, you can choose the location and 
+                    dimensions but the label should be "Click me!".</p>
+                    <p>In the <code>draw()</code> function, call the button's <code>draw()</code> method. Check that it shows up on screen and test the hover 
+                    effect.</p>
+                    <p>To click the button, implement the <code>mousePressed()</code> function. Why not <code>mouseClicked()</code>? Your implementation of the 
+                    button's <code>clicked()</code> method should be making use of the <code>mouseIsPressed</code> system variable. As this is only true when the mouse 
+                    is actively held down, not after it is clicked, <code>mousePressed()</code> is the appropriate function to use. Inside <code>mousePressed()</code> call 
+                    the button's <code>clicked()</code> method. If the button is clicked, add one to the <code>counter</code> variable.</p>
+                    <p>Finally, display text that uses <code>counter</code> to show how many times the button has been clicked.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="sketch.js"></script>
+  </body>
+</html>
