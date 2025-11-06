@@ -6,11 +6,6 @@ function draw() {
     background(0);
 }
 
-/**
- * Draws a star at the given coordinates.
- * @param {number} x 
- * @param {number} y 
- */
 function star(x, y) {
     fill(255, 234, 0);
     noStroke();
@@ -20,3 +15,85 @@ function star(x, y) {
     triangle(x - 20, y - 5, x, y + 10, x - 35, y + 30);
     triangle(x, y + 10, x + 20, y - 5, x + 35, y + 30);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class Star {
+//     constructor(x, y) {
+//         this.x = x;
+//         this.y = y;
+//     }
+
+//     draw() {
+//         star(this.x, this.y);
+//     }
+
+//     fall(speed) {
+//         this.y = this.y + speed;
+//     }
+
+//     shoot(speed) {
+//         this.x = this.x + speed;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
